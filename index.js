@@ -12,14 +12,14 @@
 // 6. In package.json in scripts add nodemon index.js to "start"
 // 7. Git init 
 // 8. Create files in /routes and module.exports Route in /routes/file and app.use thru middleware in main index.js
-
-
+// 9. So we created a route now we have to make a controller function in controller and in their specific routes we've to get /use them.
+// 10. So basically /routes/index.js mein apne new route ko router.use kro and uske router mein uska controller access kro and controller banao na banaya hoto wo function export krega.
 const express=require('express');
 const app=express();
 const port=786;
 
 //use express router thru middleware
-app.use('/',require('./routes/index'));
+app.use('/',require('./routes'));
 
 app.listen(port,function(error){
     if(error)
