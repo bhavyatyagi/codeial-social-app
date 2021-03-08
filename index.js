@@ -11,14 +11,15 @@
 // 5. Declare constants, require express; and app=express(), declare ports, default port is 80, finally do app.listen
 // 6. In package.json in scripts add nodemon index.js to "start"
 // 7. Git init 
+// 8. Create files in /routes and module.exports Route in /routes/file and app.use thru middleware in main index.js
+
 
 const express=require('express');
 const app=express();
 const port=786;
 
-// app.get("/"){
-
-// }
+//use express router thru middleware
+app.use('/',require('./routes/index'));
 
 app.listen(port,function(error){
     if(error)
