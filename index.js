@@ -21,6 +21,12 @@ const port=786;
 //use express router thru middleware
 app.use('/',require('./routes'));
 
+///////////////////////////////
+// Setting up view engine
+app.set('view engine','ejs');
+app.set('views','./views');
+/////////////////////////////////
+
 app.listen(port,function(error){
     if(error)
     {
