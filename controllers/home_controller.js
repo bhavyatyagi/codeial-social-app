@@ -1,7 +1,25 @@
 // exporting function
+
+let array=[
+    {
+        name: "Bhavya"
+    },
+    {
+        name: "Nipun"
+    },
+    {
+        name: "Rupal"
+    },
+    {
+        name: "Sony"
+    }
+]
 module.exports.home=function(request,response)
 {
-    return response.end('<h1>Loser get Chicken Dinner</h1>');
+    return response.render('home',{
+        title: "Home",
+        something: array
+    });
 }
 
 // Syntax 
