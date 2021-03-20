@@ -17,8 +17,15 @@
 const express=require('express');
 const app=express();
 const port=786;
+const cookieParser=require('cookie-parser');
+const db=require('./config/mongoose');
 
 const expressLayouts=require('express-ejs-layouts');
+const { user } = require('./config/mongoose');
+
+// readin thru the post request 
+app.use(express.urlencoded());
+app.use(cookieParser());
 
 app.use(express.static('./assets'));
 // Give it before routes 
@@ -32,7 +39,7 @@ app.use('/',require('./routes'));
 
 ///////////////////////////////
 // Setting up view engine
-app.set('view engine','ejs');
+app.set('view engine','ejs'); 
 app.set('views','./views');
 /////////////////////////////////
 
@@ -46,3 +53,10 @@ app.listen(port,function(error){
     // Known as interpolation
     console.log(`Server is up and running at port: ${port}`);
 });
+
+
+// AUTHENTICATION STEPS 
+// 1. Create user(signup)
+// 2. Create session (signin)
+// 3. show details of signed in user on profile page 
+// 4. sign out 
