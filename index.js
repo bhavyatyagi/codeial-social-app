@@ -14,14 +14,23 @@
 // 8. Create files in /routes and module.exports Route in /routes/file and app.use thru middleware in main index.js
 // 9. So we created a route now we have to make a controller function in controller and in their specific routes we've to get /use them.
 // 10. So basically /routes/index.js mein apne new route ko router.use kro and uske router mein uska controller access kro and controller banao na banaya hoto wo function export krega.
-const express=require('express');
-const app=express();
-const port=786;
-const cookieParser=require('cookie-parser');
-const db=require('./config/mongoose');
-
-const expressLayouts=require('express-ejs-layouts');
+const express = require('express');
+const app = express();
+const port = 786;
+const cookieParser = require('cookie-parser');
+const expressLayouts = require('express-ejs-layouts');
+const db = require('./config/mongoose');
+const mongoose = require('mongoose');
 const { user } = require('./config/mongoose');
+
+// for express-sessions to encrypt user infromation 
+const session = require('express-session');
+const passport = require('passport');
+const passportLocal = require('./config/passport-local-strategy');
+
+// we are doing this because our logged in user is getting logged out
+// after restarting of the server and hence we will save it using connect mongo package or called as mongo store
+const MongoStore = require('connect-mongo');
 
 // readin thru the post request 
 app.use(express.urlencoded());
@@ -33,20 +42,44 @@ app.use(expressLayouts);
 // extract styles and scripts from subpages (ejs files) into the layout 
 app.set('layout extractStyles', true);
 app.set('layout extractScripts', true);
-//use express router thru middleware
-app.use('/',require('./routes'));
+
 
 
 ///////////////////////////////
 // Setting up view engine
-app.set('view engine','ejs'); 
-app.set('views','./views');
+app.set('view engine', 'ejs');
+app.set('views', './views');
 /////////////////////////////////
 
-app.listen(port,function(error){
-    if(error)
-    {
-        console.log("Error in running the server:\nDetails:",error);
+// mongo store is used to store the session cookie in db 
+// After views, use the middleware based authentication
+app.use(session({
+    name: 'codeial',
+    // todo change the secret before deployment in production mode
+    secret: 'blahsomething',
+    saveUninitialized: false,
+    resave: false,
+    cookie: {
+        maxAge: (1000 * 60 * 100)
+    },
+    store: MongoStore.create({
+        mongoUrl: 'mongodb://localhost/codeial_development'
+    })
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+// this is done to call the function present in strategy.js file
+// so that user can be set to locals and can be excessed in ejs views 
+app.use(passport.setAuthenticatedUser);
+
+//use express router thru middleware
+app.use('/', require('./routes'));
+
+app.listen(port, function (error) {
+    if (error) {
+        console.log("Error in running the server:\nDetails:", error);
         return;
     }
     // Instead of using string ("") and , port we can use `` and ${variableName} to do it  

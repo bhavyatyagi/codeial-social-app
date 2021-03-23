@@ -1,6 +1,6 @@
 // exporting function
 
-let array=[
+let array = [
     {
         name: "Bhavya"
     },
@@ -14,9 +14,8 @@ let array=[
         name: "Sony"
     }
 ]
-module.exports.home=function(request,response)
-{
-    return response.render('home',{
+module.exports.home = function (request, response) {
+    return response.render('home', {
         title: "Home",
         something: array
     });
