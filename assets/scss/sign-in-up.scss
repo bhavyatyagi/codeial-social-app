@@ -1,0 +1,14 @@
+h1{
+    text-align: center;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    input{
+        width: 26%;
+        padding: 5px 12px;
+        margin: 10px;
+    }
+}
