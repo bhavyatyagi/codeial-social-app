@@ -1,0 +1,34 @@
+#header-display {
+  color: white;
+  background-color: darkcyan;
+  padding: 0 2%;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+#header-display a {
+  color: white;
+}
+
+#header-display #user-detail {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#header-display #user-detail div {
+  margin: 10px;
+}
+
+#header-display #user-detail div a {
+  transition: all 0.5s;
+  font-family: 'montserrat', sans-serif;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  color: white;
+}
+
+#header-display #user-detail div a:hover {
+  color: darkslategrey;
+}

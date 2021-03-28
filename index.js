@@ -31,6 +31,17 @@ const passportLocal = require('./config/passport-local-strategy');
 // we are doing this because our logged in user is getting logged out
 // after restarting of the server and hence we will save it using connect mongo package or called as mongo store
 const MongoStore = require('connect-mongo');
+// sass 
+const sassMiddleware = require('node-sass-middleware');
+
+app.use(sassMiddleware({
+    src: './assets/scss',
+    dest: './assets/css',
+    debug: true,
+    outputStyle: 'expanded',
+    prefix: '/css',
+}));
+
 
 // readin thru the post request 
 app.use(express.urlencoded());
