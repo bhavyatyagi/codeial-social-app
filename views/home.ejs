@@ -6,17 +6,6 @@
     </head>
 
     <body>
-        
-<!-- 
-        <div>
-            <ol>
-                <% for(let i of something){ %>
-                    <li>
-                        <%= i.name %>
-                    </li>
-                <% } %>
-            </ol>
-        </div> -->
 
         <section id="feed-posts">
             <h4>
@@ -28,6 +17,23 @@
             </form>
         </section>
        
+        <div>
+            <ul>
+                <% for(let post of posts){ %>
+                    <li>
+                        <p>
+                            <h3>
+                                <%= post.content %>
+                            </h3>
+                            
+                                -<%= post.user.name%>
+                            
+                        </p>
+                    </li>
+                    
+                <% } %>
+            </ul>
+        </div>
 
     </body>
 </html>

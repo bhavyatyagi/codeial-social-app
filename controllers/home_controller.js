@@ -1,5 +1,5 @@
 // exporting function
-
+let Post = require('../models/post');
 let array = [
     {
         name: "Bhavya"
@@ -15,10 +15,15 @@ let array = [
     }
 ]
 module.exports.home = function (request, response) {
-    return response.render('home', {
-        title: "Home",
-        something: array
+
+    Post.find({}).populate('user').exec(function (error, posts) {
+        return response.render('home', {
+            title: "Codeial | Home",
+            something: array,
+            posts: posts
+        });
     });
+
 }
 
 // Syntax 
