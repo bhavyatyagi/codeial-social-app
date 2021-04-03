@@ -9,6 +9,7 @@ router.get('/', homeController.home);
 router.use('/users', require('./users'));
 router.use('/account', require('./account'));
 router.use('/posts', require('./posts'));
+router.use('/comments', require('./comment'));
 
 //for an further routes, access from here
 //example: router.use('/routerName',require('./routerFile));

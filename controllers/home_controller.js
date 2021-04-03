@@ -16,13 +16,23 @@ let array = [
 ]
 module.exports.home = function (request, response) {
 
-    Post.find({}).populate('user').exec(function (error, posts) {
-        return response.render('home', {
-            title: "Codeial | Home",
-            something: array,
-            posts: posts
+
+    // populating the user object to get the details from DB
+    Post.find({})
+        .populate('user')
+        .populate({
+            path: 'comments',
+            populate: {
+                path: 'user'
+            }
+        })
+        .exec(function (error, posts) {
+            return response.render('home', {
+                title: "Codeial | Home",
+                something: array,
+                posts: posts
+            });
         });
-    });
 
 }
 
