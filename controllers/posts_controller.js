@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const Comment = require('../models/comment');
 module.exports.create = function (req, res) {
     console.log(Post);
     if (req.body.content == "") {
@@ -14,5 +15,21 @@ module.exports.create = function (req, res) {
             return;
         }
         return res.redirect('back');
+    });
+}
+
+module.exports.destroy = function (request, response) {
+    //          /posts/destroy/id/
+    Post.findById(request.params.id, function (error, post) {
+        // . id means converting object _id in string automatically by mongoose 
+        if (post.user == request.user.id) {
+            post.remove();
+            Comment.deleteMany({ post: request.params.id }, function (error) {
+                return response.redirect('back');
+            });
+
+        } else {
+            return response.redirect('back');
+        }
     });
 }
