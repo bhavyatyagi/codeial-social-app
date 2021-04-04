@@ -1,5 +1,6 @@
 // exporting function
 let Post = require('../models/post');
+const User = require('../models/user');
 let array = [
     {
         name: "Bhavya"
@@ -27,10 +28,13 @@ module.exports.home = function (request, response) {
             }
         })
         .exec(function (error, posts) {
-            return response.render('home', {
-                title: "Codeial | Home",
-                something: array,
-                posts: posts
+            User.find({}, function (error, user) {
+                return response.render('home', {
+                    title: "Codeial | Home",
+                    something: array,
+                    posts: posts,
+                    all_users: user
+                });
             });
         });
 

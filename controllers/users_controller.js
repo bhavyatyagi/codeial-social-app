@@ -1,7 +1,11 @@
 const User = require('../models/user')
 
 module.exports.profile = function (request, response) {
-    return response.render('user.ejs', {});
+    User.findById(request.params.id, function (error, user) {
+        return response.render('user.ejs', {
+            profile_user: user
+        });
+    });
 }
 
 //these are actions we are making
