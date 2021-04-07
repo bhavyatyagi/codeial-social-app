@@ -11,6 +11,8 @@ module.exports.profile = function (request, response) {
 // updating credentials/ 
 module.exports.update = function (request, response) {
     if (request.user.id == request.params.id) {
+        // in second parameter we can also put as:
+        // {name: request.body.name,email: request.body.email}
         User.findByIdAndUpdate(request.params.id, request.body, function (error, user) {
             return response.redirect('back');
         });
