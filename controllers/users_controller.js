@@ -63,10 +63,17 @@ module.exports.create = function (request, response) {
 
 //get the signin data//session
 module.exports.createSession = function (request, response) {
+    request.flash('success', 'Logged in sucessfully!');
+    // we are not passing flash as an argument hear 
+    // instead we are goin to make our own middlware 
     return response.redirect('/');
 }
 
 module.exports.destroySession = function (request, response) {
     request.logout();
+    request.flash('success', 'Logged out sucessfully!');
+
+    // we are not passing flash as an argument hear 
+    // instead we are goin to make our own middlware 
     return response.redirect('/');
 }
