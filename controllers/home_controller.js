@@ -1,26 +1,14 @@
 // exporting function
 let Post = require('../models/post');
 const User = require('../models/user');
-let array = [
-    {
-        name: "Bhavya"
-    },
-    {
-        name: "Nipun"
-    },
-    {
-        name: "Rupal"
-    },
-    {
-        name: "Sony"
-    }
-]
+
 module.exports.home = async function (request, response) {
 
 
     try {
         // populating the user object to get the details from DB
         let posts = await Post.find({})
+            .sort('-createdAt')
             .populate('user')
             .populate({
                 path: 'comments',
@@ -35,13 +23,13 @@ module.exports.home = async function (request, response) {
         let users = await User.find({}); //dont need the callback part as well function(err,user)
         return response.render('home', {
             title: "Codeial | Home",
-            something: array,
             posts: posts,
             all_users: users
         });
     } catch (error) {
         // if any error occurs in any part this will handle it easily
         console.log('******Error********', error);
+        return;
     }
 
 }
