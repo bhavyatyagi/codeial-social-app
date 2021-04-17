@@ -1,3 +1,4 @@
+
 {
     // method to submit the form data for new post using AJAX
     let createPost = function () {
@@ -11,10 +12,24 @@
                 url: '/posts/create',
                 data: newPostForm.serialize(),
                 success: function (data) {
+                    new Noty({
+                        theme: 'relax',
+                        text: "Post Created!",
+                        type: 'success',
+                        layout: 'topCenter',
+                        timeout: 1500
+                    }).show();
                     let newPost = newPostDom(data.data.post);
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
                 }, error: function (error) {
+                    new Noty({
+                        theme: 'relax',
+                        text: "Error creating Post...",
+                        type: 'error',
+                        layout: 'topCenter',
+                        timeout: 1500
+                    }).show();
                     console.log(error.responseText);
                 }
             });
@@ -66,6 +81,13 @@
                 type: 'get',
                 url: $(deleteLink).prop('href'),
                 success: function (data) {
+                    new Noty({
+                        theme: 'relax',
+                        text: "Post Deleted!",
+                        type: 'error',
+                        layout: 'topCenter',
+                        timeout: 1500
+                    }).show();
                     $(`#post-${data.data.post_id}`).remove();
                 }, error: function (error) {
                     console.log(error.responseText);
