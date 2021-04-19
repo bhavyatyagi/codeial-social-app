@@ -1,4 +1,7 @@
 const User = require('../models/user')
+// requiring these two so that we can check if any avtar is already there 
+const fs = require('fs');
+const path = require('path');
 
 module.exports.profile = function (request, response) {
     User.findById(request.params.id, function (error, user) {
@@ -31,6 +34,10 @@ module.exports.update = async function (request, response) {
                 user.name = request.body.name;
                 user.email = request.body.email;
                 if (request.file) {
+                    // this will work only when there's atleast one pic hence it will find it everytime
+                    if (user.avatar) {
+                        fs.unlinkSync(path.join(__dirname, '..', 'user.avatar'));
+                    }
                     // this is saving the path of the uploaded file into the avatar field in the user
                     user.avatar = User.avatarPath + '/' + request.file.filename;
                 }

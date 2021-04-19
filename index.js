@@ -50,6 +50,9 @@ app.use(express.urlencoded());
 app.use(cookieParser());
 
 app.use(express.static('./assets'));
+
+// make the uploads path available to the browser 
+app.use('/uploads', express.static(__dirname + '/uploads'));
 // Give it before routes 
 app.use(expressLayouts);
 // extract styles and scripts from subpages (ejs files) into the layout 

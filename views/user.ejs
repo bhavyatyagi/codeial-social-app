@@ -8,6 +8,9 @@
 <body>
 
     <h1>This is user Profile</h1>
+
+    <!-- this wont work directly because we have to create a route for it first and app.use in index.js main  -->
+    <img src="<%= user.avatar %>" alt="<%= user.name %>" width="100">
     <p><%= profile_user.name %></p>
     <p><%= profile_user.email %></p>
 

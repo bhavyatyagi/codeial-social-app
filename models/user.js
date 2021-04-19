@@ -49,4 +49,8 @@ module.exports = User;
 // 4. Join our path to multer storage(where we want to save) , the syntax is avail in doc
 // 5. Next, we've to use this storgae
 // 6. We created static functions in the same js file
-// 7. We made the request ajax in controller and there we accesed the static module to get req.file
+// 7. We made the request ajax in controller and there we accesed the static module to get req.file\
+
+// Show uplaoded file on page
+// 1. add < img > in ejs file wiht appropriate details
+// 2. Add app.use for the path in index.js main file
