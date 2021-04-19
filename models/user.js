@@ -42,7 +42,7 @@ const User = mongoose.model('User', userSchema);
 
 module.exports = User;
 
-// File Upload
+//// File Upload
 // 1. install multer add enctype in form and add constants in model > js
 // 2. require apth and const avatar_path and join the uplaods and the avatar folder
 // 3. Add avatars into user schema and link avatar_pth and avatar field of user schema
@@ -51,6 +51,8 @@ module.exports = User;
 // 6. We created static functions in the same js file
 // 7. We made the request ajax in controller and there we accesed the static module to get req.file\
 
-// Show uplaoded file on page
+//// Show uplaoded file on page
 // 1. add < img > in ejs file wiht appropriate details
 // 2. Add app.use for the path in index.js main file
+
+//// Edge CAse

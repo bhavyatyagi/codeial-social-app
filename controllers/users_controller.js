@@ -35,8 +35,9 @@ module.exports.update = async function (request, response) {
                 user.email = request.body.email;
                 if (request.file) {
                     // this will work only when there's atleast one pic hence it will find it everytime
+                    // deleting previous image 
                     if (user.avatar) {
-                        fs.unlinkSync(path.join(__dirname, '..', 'user.avatar'));
+                        fs.unlinkSync(path.join(__dirname, '..', user.avatar));
                     }
                     // this is saving the path of the uploaded file into the avatar field in the user
                     user.avatar = User.avatarPath + '/' + request.file.filename;
