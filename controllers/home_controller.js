@@ -15,7 +15,7 @@ module.exports.home = async function (request, response) {
                 populate: {
                     path: 'user'
                 }
-            })
+            });
         // .exec(function (error, posts) {
         // taken users part outside to make it async
         // });
