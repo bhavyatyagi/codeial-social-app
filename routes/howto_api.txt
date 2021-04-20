@@ -1,0 +1,5 @@
+Directory Structure
+1. we will have api folders in controllers and routers
+2. controllers -> api/v1, routers api/index.js ,api/v1/index.js
+
+

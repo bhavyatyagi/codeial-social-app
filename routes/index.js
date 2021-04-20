@@ -12,6 +12,9 @@ router.use('/account', require('./account'));
 router.use('/posts', require('./posts'));
 router.use('/comments', require('./comments'));
 
+router.use('/api', require('./api'));
+
+
 //for an further routes, access from here
 //example: router.use('/routerName',require('./routerFile));
 module.exports = router;
