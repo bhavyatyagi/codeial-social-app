@@ -27,6 +27,7 @@ const { user } = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
+const passportJWT = require('./config/passport-jwt-strategy');
 
 // we are doing this because our logged in user is getting logged out
 // after restarting of the server and hence we will save it using connect mongo package or called as mongo store

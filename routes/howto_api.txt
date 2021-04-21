@@ -1,5 +1,11 @@
-Directory Structure
+////Directory Structure
 1. we will have api folders in controllers and routers
 2. controllers -> api/v1, routers api/index.js ,api/v1/index.js
 
 
+////Show and Delete Posts
+3. Add appropriate routes for each file so that you can access on :80/api/v1/posts
+4. To give you an example to access /api you will need to add a route.use in main index routers
+5. for v1 in index.js of api youll need to router.use it
+6. in and v1 require the posts file using router.use
+7. in posts you need to return the appropriate data with the help of a controller
