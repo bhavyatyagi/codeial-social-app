@@ -4,9 +4,16 @@ Json Web Tokens: JWT Header . Paylaod . Signature
 Payload contains the infromation of the user like username and password 
 api cannot stories cookies and without sotring in DB to make auth happen JWT is used
 
-///how to
+///how to use jwt and create token
 1. we need to install jwt strategy just like installed passport local strategy using
         npm i passport-jwt
 2. Then create a new file in config just like we did for local strategy and reqruire in main index.js
 3. Add appropriate requires and stuff in the strategy.js file.
 4. After strategy config do npm i jsonwebtoken and complete the newly created users_api,js controller in controllers
+5. complete the controller file and add appropriate route in index.js of api/vi
+6. You should now be able to create an auth token while signing in using postman
+
+
+
+///how to delete auhtentically using passport jwt
+1. to users.js in api/v1/ add appropriate data and do a delete rquest using passport jwt while making session as false so not to create any session cookies.

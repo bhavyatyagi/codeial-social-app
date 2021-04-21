@@ -21,23 +21,23 @@ module.exports.destroy = async function (request, response) {
     //          /posts/destroy/id/
     try {
         let post = await Post.findById(request.params.id);
-        // if (post.user == request.user.id) {
-        post.remove();
-        await Comment.deleteMany({
-            post: request.params.id
-        });
+        if (post.user == request.user.id) {
+            post.remove();
+            await Comment.deleteMany({
+                post: request.params.id
+            });
 
-        return response.json(200, {
-            message: "Post and associated comments deleted!"
-        })
-        // request.flash('success', 'Post and related comments deleted!');
+            return response.json(200, {
+                message: "Post and associated comments deleted!"
+            })
+            // request.flash('success', 'Post and related comments deleted!');
 
-        return response.redirect('back');
 
-        // } else {
-        //     request.flash('error', 'Unauthorised: You cannot delete this post');
-        //     return response.redirect('back');
-        // }
+        } else {
+            return response.json(401, {
+                message: "Unauthorised, you can not delete this post"
+            })
+        }
     } catch (error) {
         console.log('********ERROR******', error);
         response.json(500, {
