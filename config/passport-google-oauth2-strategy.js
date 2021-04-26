@@ -11,7 +11,7 @@ passport.use(new googleStrategy({
 
 },
     function (accessToken, refreshToken, profile, done) {
-        User.findOne({ email: profile.emails(0).value }).exec(function (error, user) {
+        User.findOne({ email: profile.emails[0].value }).exec(function (error, user) {
             if (error) {
                 console.log('*****ERROR in google strategy apssport', error);
                 return;
@@ -25,7 +25,7 @@ passport.use(new googleStrategy({
                 // if not found create the user and set it as req.user / sign in that user
                 User.create({
                     name: profile.displayName,
-                    email: profile.emails(0).value,
+                    email: profile.emails[0].value,
                     password: crypto.randomBytes(20).toString('hex')
                 }, function (error, user) {
                     if (error) { console.log('ERROR in creating google strategy pasport', error); return; }

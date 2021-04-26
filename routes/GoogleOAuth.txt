@@ -8,3 +8,10 @@ Social Authentication
 6. URI: http://localhost:786/users/auth/google/callback
 (auth redirect URIs)
 7. 
+
+-passposrt-google-oAuth2.0 strategy is used
+-Make strategy and add appropriate data to strategy.JS
+-install crypto, passport-google-oauth
+-make proper routes in users.js routes
+- add sign in button
+- requrie the strategy in main index.js (Very Important)

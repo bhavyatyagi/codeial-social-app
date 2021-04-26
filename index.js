@@ -16,7 +16,7 @@
 // 10. So basically /routes/index.js mein apne new route ko router.use kro and uske router mein uska controller access kro and controller banao na banaya hoto wo function export krega.
 const express = require('express');
 const app = express();
-const port = 786;
+const port = 8000;
 const cookieParser = require('cookie-parser');
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
@@ -28,6 +28,7 @@ const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
 const passportJWT = require('./config/passport-jwt-strategy');
+const passportGoogle = require('./config/passport-google-oauth2-strategy');
 
 // we are doing this because our logged in user is getting logged out
 // after restarting of the server and hence we will save it using connect mongo package or called as mongo store
