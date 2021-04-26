@@ -1,0 +1,10 @@
+Social Authentication
+
+1. goto google cloud api sectionn and create a new project 
+2. OAuth1: generated a token used it untill it gets expired
+3. OAuth2: Contains Limited set of information, Limited set of permissions, much more secure.
+4. In google console, Apis>Credentials>Create Credentials>OAuth Client ID [You may have to configure Oath consent screen before this[]]
+5. URI: http://localhost:786 (JS Origins)
+6. URI: http://localhost:786/users/auth/google/callback
+(auth redirect URIs)
+7. 
