@@ -1,0 +1,14 @@
+What are required stuff?
+
+-nodemailer
+-config
+-mailers
+-templates
+
+whya re we using so many padckages: because someone has worked hard on it and we can right now use it, later we can make our own packages also
+npm i nodemailer
+ 1. make nodemailer.js in config and add appropriate details from doc
+ 2. Suppose we are making a mailer for new comments then we will create a new file in the mailers folder.
+ 3. we will require nodemailer there and export a function/module from there so that a mail can go to the user who adds a new comment.
+ 4. Next go to comments controller and populate the User of Comment instead of checking req.hxr beforehand so that we can access it in comments mailer.
+ 5. Import this comments mailer in comments controller andd use or call it whereever required
