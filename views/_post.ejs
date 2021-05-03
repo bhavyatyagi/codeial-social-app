@@ -1,3 +1,18 @@
+<!-- Procedure to do the frontend part for likes -->
+<!-- All the files that have been updated -->
+<!-- 
+Populate another path like in home_controller for both post and comments as we want the like count for every post and comment
+Import Like in posts controller
+Delete all the like of that post and likes of comments of that post  in post controller
+Same thing in comments controllerm import and delete likes onmodel comment
+Add frontend button part in both post.ejs and comment.ejs  
+make changes in home_posts.js and add the same frontend without ejs partials in newPostDom
+In home_post_comments.js as well same thing
+in home.ejs imported the file toggle_likes.js that is actually doing the functionality of likesCount
+in toggle_likes we've created a function see there
+-->
+
+
 <li id="post-<%=post._id %>">
     <p>
 
@@ -10,10 +25,22 @@
             <a class="delete-post-button" href="/posts/destroy/<%=post.id%>">Delete Post</a>
         </small>
         <%}%>
+
+        <small>
+            <% if(locals.user){ %>
+        <a class="toggle-like-button" data-likes="<%= post.likes.length %>" href="/likes/toggle/?id=<%=post._id%>&type=Post">
+            <%=post.likes.length%> Likes
+        </a>
+        <%}else{%>
+        <%=post.likes.length%> Likes
+        <%}%>
+        </small>
     </p>
 
     <div class="post-comments">
         <% if(locals.user){%>
+            <!-- let's give an id to the new comment form, we'll also need to make the same changes in home_posts.js where we're adding a post to the page -->
+
         <form id="post-<%=post._id%>-comments-form" action="/comments/create" method="POST">
             <input type="text" name="content" placeholder="add comment..." required>
             <input type="hidden" name="post" value="<%= post._id%>">

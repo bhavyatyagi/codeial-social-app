@@ -14,8 +14,11 @@ module.exports.home = async function (request, response) {
                 path: 'comments',
                 populate: {
                     path: 'user'
+                },
+                populate: {
+                    path: 'likes'
                 }
-            });
+            }).populate('comments').populate('likes');
         // .exec(function (error, posts) {
         // taken users part outside to make it async
         // });

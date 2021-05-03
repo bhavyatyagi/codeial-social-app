@@ -12,6 +12,15 @@
                 url: '/posts/create',
                 data: newPostForm.serialize(),
                 success: function (data) {
+
+
+                    let newPost = newPostDom(data.data.post);
+                    $('#posts-list-container>ul').prepend(newPost);
+                    deletePost($(' .delete-post-button', newPost));
+                    new PostComments(data.data.post._id);
+                    // enabling the functionality of toggle like button on the new POST 
+                    new ToggleLike($(' .toggle-like-button', newPost));
+
                     new Noty({
                         theme: 'relax',
                         text: "Post Created!",
@@ -19,9 +28,6 @@
                         layout: 'topCenter',
                         timeout: 1500
                     }).show();
-                    let newPost = newPostDom(data.data.post);
-                    $('#posts-list-container>ul').prepend(newPost);
-                    deletePost($(' .delete-post-button', newPost));
                 }, error: function (error) {
                     new Noty({
                         theme: 'relax',
@@ -46,7 +52,13 @@
                         </h3>
                         
                             -${post.user.name}
-                        
+                            <small>
+                            
+                                <a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${post._id}&type=Post">
+                                    0 Likes
+                                </a>
+                            
+                        </small>
                         <small>
                             <a class="delete-post-button"  href="/posts/destroy/${post._id}">Delete Post</a>
                         </small>

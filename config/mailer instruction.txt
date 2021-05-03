@@ -12,3 +12,23 @@ npm i nodemailer
  3. we will require nodemailer there and export a function/module from there so that a mail can go to the user who adds a new comment.
  4. Next go to comments controller and populate the User of Comment instead of checking req.hxr beforehand so that we can access it in comments mailer.
  5. Import this comments mailer in comments controller andd use or call it whereever required
+
+ //Delayed JOBS
+ We can define tasks as immidiate or delayed fro example
+ OTP and comments notification respecitvely
+ Redis is an in-memory data structure project implementing a distributed, in-memory key-value database with optional durability.
+ Kue is a priority job queue backed by redis built for nodejs
+  Redish acts as cache or RAM and data inside may get deleted when application turns off
+ Kue installation and setup
+ 1. Install kue npm i kue and redis using windows powershell
+ 2. create kue.js in config and add 3 lines]
+ 3. create worker, new foler in codeial
+ 4. in workers create a new comment worker, add appropriate detail and instead of calling newComment using nodemailer in the comments_controller we will use this file to call and will add that to queue
+ 5. in comments_controller we import queue and use queue.create(), save it as job and console.log(job.id)
+
+before viewing on localhost dont forget to write redis-server on the windows terminal
+ in kue.js there's only single thread and we r optimising jobs on that whereas in ruby on rails there is concept of multithreading to schedule jobs
+
+to visualise kue.js in terminal do
+./node_modules/kue/bin/kue-dashboard
+

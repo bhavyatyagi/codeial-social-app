@@ -1,6 +1,9 @@
 const Comment = require('../models/comment');
 const Post = require('../models/post');
+const Like = require('../models/like');
 const commentsMailer = require('../mailers/comments_mailer');
+const queue = require('../config/kue');
+const commentEmailWorker = require('../workers//comment_email_worker');
 
 module.exports.create = async function (request, response) {
     try {
@@ -15,7 +18,16 @@ module.exports.create = async function (request, response) {
             post.save();
 
             comment = await comment.populate('user', 'name email').execPopulate();
-            commentsMailer.newComment(comment);
+            // now commented as implemented in workers / comments_email_worker.js
+            // commentsMailer.newComment(comment);
+            // instead we put 
+            let job = queue.create('emails', comment).save(function (error) {
+                if (error) {
+                    console.log('Error', error);
+                    return;
+                }
+                console.log('job enqueued', job.id);
+            });
             if (request.xhr) {
                 return response.status(200).joson({
                     data: {
@@ -28,8 +40,6 @@ module.exports.create = async function (request, response) {
             request.flash('success', 'Comment added');
             response.redirect('/');
         }
-
-
     } catch (error) {
         request.flash('error', 'Something went Wrong');
 
@@ -49,8 +59,9 @@ module.exports.destroy = async function (req, res) {
                     comments: req.params.id
                 }
             });
+            await Like.deleteMany({ likeable: comment._id, onModel: 'Comment' });
 
-
+            // send the comment id which was deleted back to the views 
             if (req.xhr) {
                 return res.status(200).json(
                     {
