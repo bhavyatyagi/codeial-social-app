@@ -1,0 +1,18 @@
+Make a partial _chat_box.ejs include in home.ejs
+style it 
+use Web-Sockets, socket.io
+
+1. We would require socket at both frontend and backend side, npm i socket.io
+2. create chat_sockets.js in config folder
+3. Do necessary changes in main Index.js and in the chat_sockets.js file
+4. Create a new assets/js file naming chat_engine.js 
+5. Import cdn of socket.io.js in home.ejs
+6. Make a class in chat_sockets.js and initialise it in home.ejs
+7. After initialiseing connection from home.ejs and chat_engine , recieve it at chat_sockets.js at backend
+
+IMPORTANT 8. if the latest socket.io version is giving error then install the chrome extension or add headwers.
+https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en
+
+Connction Established using SOCKETS TILL NOW
+
+9. 
