@@ -58,6 +58,6 @@
     <%if(locals.user){%>
     <script>
         // sending a request for the connection if user exists 
-        new ChatEngine('user-chat-box','<%=locals.user._id%>');
+        new ChatEngine('user-chat-box','<%=locals.user.email%>');
     </script>
     <%}%>
