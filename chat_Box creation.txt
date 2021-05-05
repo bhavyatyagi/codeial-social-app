@@ -18,4 +18,4 @@ Connction Established using SOCKETS TILL NOW
 9. Emit and recieve socket from frontend and backend and make sure the sockets are being joined.
 
 SENDING MESSAGES
-10. Same thing
+10. Same thing complete the sockets.js and chatbox_engine.js carefully

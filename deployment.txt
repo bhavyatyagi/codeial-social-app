@@ -1,0 +1,6 @@
+1. Create environment.js in config and place all the static paths and passwords there. and use env vaariable to access them back in main index.js
+    Basic step is wherever u want to change value with env.variable create a var in environment.js in config and require env in the file u took value from and access it using env.var
+    repeat this for paths, db, secrets, keys
+
+    This was just for development level keys
+2. Now we will make production level enviornment where our keys wont be visible and wont be in the code 
