@@ -15,4 +15,7 @@ https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgc
 
 Connction Established using SOCKETS TILL NOW
 
-9. 
+9. Emit and recieve socket from frontend and backend and make sure the sockets are being joined.
+
+SENDING MESSAGES
+10. Same thing
