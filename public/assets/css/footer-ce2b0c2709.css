@@ -1,0 +1,28 @@
+footer {
+  color: white;
+  background-color: black;
+  position: relative;
+  width: 100%;
+  bottom: 0px;
+  font-family: 'montserrat',sans-serif;
+}
+
+footer #footer-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+footer #footer-display div {
+  margin: 0 10px;
+}
+
+footer #footer-display #information a {
+  transition: all 0.5s;
+  color: white;
+}
+
+footer #footer-display #information a:hover {
+  color: cyan;
+  transform: scaleY(2px);
+}

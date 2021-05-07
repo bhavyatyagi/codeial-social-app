@@ -13,3 +13,6 @@
     
 3. After this for production logs we install morgan and rotating file stream
 4. include rfs,path,fs in env.js and include morgan details in both prod and dev modules and compelte the env.js file
+ - This should add new folder/files to the project and our access logs will be being saved
+
+5. Using GULP, make a file gulpfile.js in the main folder besides index.js installing rep, cssnano, gulp-sass, gulp etc. and add appropriate details to the file
