@@ -4,3 +4,10 @@
 
     This was just for development level keys
 2. Now we will make production level enviornment where our keys wont be visible and wont be in the code 
+    In bash 
+        vi ~/.bash_profile
+        - export your varaibales and use them as process.env.varName in the env.js
+        source ~/.bash_profile [this is done to update the file]
+
+    Add every new var and assign them in the production module.
+    

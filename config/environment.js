@@ -24,22 +24,21 @@ const production = {
     name: 'production',
     asset_path: process.env.CODEIAL_ASSET_PATH,
     session_cookie_key: process.env.CODEIAL_SESSION_KEY,
-    db: 'codeial_development',
+    db: 'codeial_production',
     smtp: {
         service: 'gmail',
         host: 'smtp.gmail@.com',
         port: 587,
         secure: false,
         auth: {
-            user: 'bhavyatyagi4@gmail.com',
-            pass: '96879687'
+            user: process.env.CODEIAL_GMAIL_USERNAME,
+            pass: process.env.CODEIAL_GMAIL_PASSWORD
         }
     },
-    google_client_id: "966945793134-5etncgjor1ok8bkvpb2tqr4q8f2otlq7.apps.googleusercontent.com",
-    google_client_secret: "wem0moYdOHR7rvHl76e3dxfs",
-    google_call_back_url: "http://localhost:8000/users/auth/google/callback",
+    google_client_id: process.env.CODEIAL_GOOGLE_CLIENT_ID,
+    google_client_secret: process.env.CODEIAL_GOOGLE_CLIENT_SECRET,
+    google_call_back_url: process.env.CODEIAL_GOOGLE_CALLBACK_URL,
     jwt_secret: process.env.CODEIAL_JWT_SECRET
-
 }
 
-module.exports = development;
+module.exports = eval(process.env.CODEIAL_ENVIRONMENT) == undefined ? development : eval(process.env.CODEIAL_ENVIRONMENT);

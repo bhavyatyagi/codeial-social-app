@@ -1,13 +1,15 @@
 <h1>This is signup Page</h1>
 
-<form action="/users/create" method="POST">
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="email" name="email" placeholder="Your Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <input type="password" name="confirm_password" placeholder="Confirm" required>
-    <input type="submit" value="Sign Up">
-</form>
-
+<div class="sign-in-up-page">
+    <form action="/users/create" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="password" name="confirm_password" placeholder="Confirm" required>
+        <input type="submit" value="Sign Up">
+    </form>
+    
+</div>
 <p>
     <a href="/users/auth/google">Google SignIn/SigUp</a>
 </p>
