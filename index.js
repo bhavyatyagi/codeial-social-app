@@ -15,7 +15,10 @@
 // 9. So we created a route now we have to make a controller function in controller and in their specific routes we've to get /use them.
 // 10. So basically /routes/index.js mein apne new route ko router.use kro and uske router mein uska controller access kro and controller banao na banaya hoto wo function export krega.
 const express = require('express');
+
 const env = require('./config/environment');
+const logger = require('morgan');
+
 const app = express();
 const port = 8000;
 const cookieParser = require('cookie-parser');
@@ -67,6 +70,9 @@ app.use(express.static(env.asset_path));
 // make the uploads path available to the browser 
 app.use('/uploads', express.static(__dirname + '/uploads'));
 // Give it before routes 
+
+app.use(logger(env.morgan.mode, env.morgan.options));
+
 app.use(expressLayouts);
 // extract styles and scripts from subpages (ejs files) into the layout 
 app.set('layout extractStyles', true);

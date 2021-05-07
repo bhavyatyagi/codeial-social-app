@@ -11,3 +11,5 @@
 
     Add every new var and assign them in the production module.
     
+3. After this for production logs we install morgan and rotating file stream
+4. include rfs,path,fs in env.js and include morgan details in both prod and dev modules and compelte the env.js file
