@@ -7,5 +7,9 @@
   "css/sign-in-up.css": "css/sign-in-up-356ee83378.css",
   "css/sign-in.css": "css/sign-in-5934cf40e7.css",
   "css/sign-up.css": "css/sign-up-d41d8cd98f.css",
-  "css/user.css": "css/user-b3e404a6af.css"
+  "css/user.css": "css/user-b3e404a6af.css",
+  "js/chat_engine.js": "js/chat_engine-abfd775ad0.js",
+  "js/home_posts.js": "js/home_posts-db08105328.js",
+  "js/home_posts_comments.js": "js/home_posts_comments-4cb1891bef.js",
+  "js/toggle_likes.js": "js/toggle_likes-6888e2eea1.js"
 }

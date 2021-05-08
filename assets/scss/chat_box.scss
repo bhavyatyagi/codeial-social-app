@@ -1,11 +1,13 @@
 #user-chat-box{
+    
     position: fixed;
+    
     bottom: 10px;
     right: 10px;
     border: 1px dashed grey;
     height: 350px;
 	width: 300px;
-    background: transparent;
+    background: #f1fcfc;
 	padding: 5px;
 	box-shadow: 1px 1px 1px 1px lightgrey;
     #chat-messages-list{

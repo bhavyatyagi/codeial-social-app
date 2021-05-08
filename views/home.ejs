@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="/css/home.css">
-<link rel="stylesheet" href="/css/chat_box.css">
+<link rel="stylesheet" href="<%= assetPath('css/home.css') %>">
+<link rel="stylesheet" href="<%= assetPath('css/chat_box.css') %>">
 
 
 <body>
@@ -40,11 +40,11 @@
 </body>
 
     <!-- improting this script for creating the ajax comments  -->
-    <script src="js/home_posts_comments.js"></script>
-    <script src="/js/home_posts.js"></script>
+    <script src="<%= assetPath('js/home_posts_comments.js') %>"></script>
+    <script src="<%= assetPath('js/home_posts.js') %>"></script>
 
     <!-- importing script file for toggle likes, also run it over for the already present posts and comments  -->
-    <script src="/js/toggle_likes.js"></script>
+    <script src="<%= assetPath('js/toggle_likes.js') %>"></script>
     <script>
         $('.toggle-like-button').each(function(){
             let self=this;
@@ -54,7 +54,7 @@
 
     <!-- Inlcuding cdn of socket.io  -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-    <script src="/js/chat_engine.js"></script>
+    <script src="<%= assetPath('js/chat_engine.js') %>"></script>
     <%if(locals.user){%>
     <script>
         // sending a request for the connection if user exists 

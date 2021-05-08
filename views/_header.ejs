@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/header.css">
+<link rel="stylesheet" href="<%= assetPath('css/header.css') %>">
 
 <header>
    <div id="header-display">
@@ -9,7 +9,7 @@
         <!-- not declares user anywhere hence using it as it is  -->
         <% if(locals.user){ %>
             <div class="user-status">
-                <a href="/users/profile"><%=user.name%></a>
+                <a href="/users/profile/<%=u.id%>"><%=user.name%></a>
             </div>
             <div class="user-status">
                 <a href="/users/sign-out">Signout</a>
