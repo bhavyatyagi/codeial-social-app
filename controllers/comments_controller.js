@@ -29,11 +29,11 @@ module.exports.create = async function (request, response) {
                 console.log('job enqueued', job.id);
             });
             if (request.xhr) {
-                return response.status(200).joson({
+                return response.status(200).json({
                     data: {
                         comment: comment
                     },
-                    message: "Post Created"
+                    message: "Comment Created"
                 });
             }
 
@@ -51,7 +51,7 @@ module.exports.destroy = async function (req, res) {
 
     try {
         let comment = await Comment.findById(req.params.id);
-        if (comment.user == req.user.id) {
+        if (comment.user == req.user.id || post.user.id == req.user.id) {
             let postId = comment.post;
             comment.remove();
             let post = await Post.findByIdAndUpdate(postId, {
@@ -68,7 +68,7 @@ module.exports.destroy = async function (req, res) {
                         data: {
                             comment_id: req.params.id
                         },
-                        message: "Post Deleted"
+                        message: "Comment Deleted"
                     });
             }
             req.flash('success', 'Comment deleted!');

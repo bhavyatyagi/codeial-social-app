@@ -45,6 +45,7 @@
 
     // method to create a post in DOM
     let newPostDom = function (post) {
+
         return $(`<li id="post-${post._id}">
                     <p>
                         <h3>
